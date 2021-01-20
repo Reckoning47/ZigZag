@@ -34,7 +34,7 @@ public class BallController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            JumpLerp();
+            //JumpLerp();
             
             //myRigidBody.AddForce(0, jumpForce, 0);
         }
@@ -57,6 +57,7 @@ public class BallController : MonoBehaviour
 
     private void ResetPosition()
     {
+        myRigidBody.velocity = new Vector3(0, 0, 0);
         transform.position = new Vector3(0f, 0.434293f, 0f);
     }
 }
