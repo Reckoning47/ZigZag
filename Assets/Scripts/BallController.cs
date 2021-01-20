@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
 
+    //public static Action<bool> gameOver;
+
     [SerializeField] private float speed = 1f;
     [SerializeField] float jumpForce = 10f;
     Rigidbody myRigidBody;
-    bool gameOver = false;
+    public bool gameOver = false;
+
 
     Vector3 movement;
 
@@ -16,11 +20,13 @@ public class BallController : MonoBehaviour
     void Awake()
     {
         myRigidBody = GetComponent<Rigidbody>();
+        myRigidBody.velocity = new Vector3(0, 0, 0);
     }
 
     private void Start()
     {
         myRigidBody.velocity = new Vector3(0, 0, 0);
+        
     }
 
     // Update is called once per frame
@@ -58,6 +64,13 @@ public class BallController : MonoBehaviour
     private void ResetPosition()
     {
         myRigidBody.velocity = new Vector3(0, 0, 0);
-        transform.position = new Vector3(0f, 0.434293f, 0f);
+        transform.position = new Vector3(-9f, 0.434293f, 0f);
     }
+
+
+    public bool GetGameOver()
+    {
+        return gameOver;
+    }
+
 }
