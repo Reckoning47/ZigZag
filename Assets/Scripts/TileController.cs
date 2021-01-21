@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 {
+    [SerializeField] float fallDelay = 1f;
+
     Renderer _renderer;
 
     float value = 0f;
@@ -22,12 +24,12 @@ public class TileController : MonoBehaviour
         if(tileFalling)
         {
             _renderer.material.SetFloat(shaderProperty, value);
-            value += .01f;
+            value += .02f;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Invoke("FallDown", .5f);
+        Invoke("FallDown", fallDelay);
     }
 
     private void FallDown()
@@ -36,6 +38,8 @@ public class TileController : MonoBehaviour
         tileFalling = true;
         rb.isKinematic = false;
         rb.useGravity = true;
+
+        //Destroy(PlatformSpawner.instance.bonusPrefab.gameObject, 2f);
 
         Destroy(gameObject, 2f);
     }

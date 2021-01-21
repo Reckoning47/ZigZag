@@ -32,18 +32,19 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         var xDir = Input.GetAxis("Vertical");
         var zDir = Input.GetAxis("Horizontal");
 
-        myRigidBody.velocity = new Vector3(-xDir * speed * Time.deltaTime, myRigidBody.velocity.y, zDir * speed * Time.deltaTime);
+        myRigidBody.velocity = new Vector3(xDir * speed * Time.deltaTime, myRigidBody.velocity.y, -zDir * speed * Time.deltaTime);
 
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            //JumpLerp();
+        //if (Input.GetKey(KeyCode.Space))
+        //{
+        //    //JumpLerp();
             
-            //myRigidBody.AddForce(0, jumpForce, 0);
-        }
+        //    //myRigidBody.AddForce(0, jumpForce, 0);
+        //}
 
         if(myRigidBody.position.y < -1)
         {
