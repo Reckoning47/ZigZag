@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileController : MonoBehaviour
 {
     [SerializeField] float fallDelay = 1f;
-
+    GameObject playerInstance;
     Renderer _renderer;
 
     float value = 0f;
@@ -16,6 +16,7 @@ public class TileController : MonoBehaviour
     {
         _renderer = GetComponent<Renderer>();
         shaderProperty = Shader.PropertyToID("_cutoff");
+        playerInstance = GameObject.Find("Player");
     }
 
     void Update()
@@ -25,6 +26,10 @@ public class TileController : MonoBehaviour
         {
             _renderer.material.SetFloat(shaderProperty, value);
             value += .02f;
+        }
+        if ((transform.position.x - playerInstance.transform.position.x) <= -1)
+        {
+            FallDown();
         }
     }
     private void OnCollisionEnter(Collision collision)

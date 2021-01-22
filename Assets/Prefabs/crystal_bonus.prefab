@@ -127,3 +127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusValue: 10
+  playerPrefab: {fileID: 4645653897431977060, guid: 164e6fe90ac65e249891e2dfcb8416ca,
+    type: 3}

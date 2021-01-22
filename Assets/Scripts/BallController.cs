@@ -10,6 +10,8 @@ public class BallController : MonoBehaviour
 
     [SerializeField] private float speed = 1f;
     [SerializeField] float jumpForce = 10f;
+    [SerializeField] Joystick joystick;
+
     Rigidbody myRigidBody;
     public bool gameOver = false;
 
@@ -33,20 +35,28 @@ public class BallController : MonoBehaviour
     void Update()
     {
 
-        var xDir = Input.GetAxis("Vertical");
-        var zDir = Input.GetAxis("Horizontal");
+        //var xDir = Input.GetAxis("Vertical");
+        //var zDir = Input.GetAxis("Horizontal");
+        var xDir = joystick.Vertical;
+        var zDir = joystick.Horizontal;
+        //if(Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.GetTouch(0);
+        //    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+        //    transform.position = touchPos;
+        //}
 
         myRigidBody.velocity = new Vector3(xDir * speed * Time.deltaTime, myRigidBody.velocity.y, -zDir * speed * Time.deltaTime);
-
+        
 
         //if (Input.GetKey(KeyCode.Space))
         //{
         //    //JumpLerp();
-            
+
         //    //myRigidBody.AddForce(0, jumpForce, 0);
         //}
 
-        if(myRigidBody.position.y < -1)
+        if (myRigidBody.position.y < -1)
         {
             gameOver = true;
             ResetPosition();
@@ -65,7 +75,7 @@ public class BallController : MonoBehaviour
     private void ResetPosition()
     {
         myRigidBody.velocity = new Vector3(0, 0, 0);
-        transform.position = new Vector3(-9f, 0.434293f, 0f);
+        transform.position = new Vector3(0f, 0.434293f, 0f);
     }
 
 

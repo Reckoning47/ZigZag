@@ -123,5 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec0c4850b0c7d346820a2e8dd72a4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
+  speed: 200
   jumpForce: 10
+  joystick: {fileID: 0}
+  gameOver: 0
