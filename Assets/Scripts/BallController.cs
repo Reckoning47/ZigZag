@@ -39,12 +39,6 @@ public class BallController : MonoBehaviour
         //var zDir = Input.GetAxis("Horizontal");
         var xDir = joystick.Vertical;
         var zDir = joystick.Horizontal;
-        //if(Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-        //    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-        //    transform.position = touchPos;
-        //}
 
         myRigidBody.velocity = new Vector3(xDir * speed * Time.deltaTime, myRigidBody.velocity.y, -zDir * speed * Time.deltaTime);
         

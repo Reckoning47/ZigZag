@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformSpawner : MonoSingleton<PlatformSpawner>
+public class PlatformSpawner : MonoBehaviour
 {
     public GameObject platformPrefab;
     public GameObject bonusPrefab;
+    
+    UIManager uiManager;
 
     Vector3 lastPos;
     float size;
     BallController player;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        uiManager = FindObjectOfType<UIManager>();
         lastPos = platformPrefab.transform.position;
         size = platformPrefab.transform.localScale.x;
 
@@ -33,8 +37,12 @@ public class PlatformSpawner : MonoSingleton<PlatformSpawner>
     {
         if (player.gameOver)
         {
-            ScoreManager.instance.SetAccumulate(false);
+            //Debug.Log("player.gameOver is " + player.gameOver);
+            uiManager.SetAccumulate(false);
+            uiManager.EnableButtons(player.gameOver);
             CancelInvoke("SpawnPlatforms");
+
+            
         }
     }
 

@@ -19,10 +19,10 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         Follow();
-        if (!target.GetGameOver())
-        {
+        //if (!target.GetGameOver())
+        //{
             
-        }
+        //}
     }
     void Follow()
     {
